@@ -7,7 +7,11 @@ import { loginUsuario } from './controllers/login.js';
 
 const app = express();
 //habilitar todas la rutas
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 app.use(express.json());
 
 // primer ruta

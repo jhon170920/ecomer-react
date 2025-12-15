@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {ShoppingCart, User, Menu, X} from 'lucide-react';
+import { Link } from "react-router-dom";
 
 function Navbar(){
     const [cartCount, setCartCount] = useState(0);
@@ -52,10 +53,10 @@ function Navbar(){
                             </span>
                         )}
                         </a>
-                        <a href="#login" className="relative group p-2.5 hover:bg-linear-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl 
+                        <Link to={"/Login"} className="relative group p-2.5 hover:bg-linear-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl 
                         transition-all duration-300 transform hover:scale-105">
                             <User className="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition-all duration-300"/>
-                        </a>
+                        </Link>
                         {/* Mobile Menu Button */}
                         <button onClick={()=> setMobileMenuOpen(!mobileMenuOpen)}
                         className="md:hidden p-2.5 hover:bg-linear-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl transition-all duration-300">
