@@ -1,8 +1,8 @@
 function Footerpage() {
     return(
         <footer id="contacto" className="bg-gray-900 text-white py-12 flex justify-center">
-        <div class="max-w-7xl max-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl max-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div className="flex items-center mb-4">
                         <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">

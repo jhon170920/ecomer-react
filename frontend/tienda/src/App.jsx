@@ -1,20 +1,17 @@
-import Navbar from "./components/Layout/Navbar.jsx";
-import Hero from "./components/Home/hero.jsx";
-import Categories from "./components/Home/categorias.jsx";
-import Footerpage from "./components/Layout/Footer.jsx";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './components/Pages/Home';
 
 function App() {
 
   return (
-    <>
-    <Navbar/>
-    <Hero/>
-    <Categories/>
-    <Footerpage/>
-
-    </>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+    </Routes>
+    </BrowserRouter>
     
-  )
+  );
 }
 
-export default App
+export default App;
+2

@@ -22,7 +22,7 @@ function Navbar(){
                         </h1>
                     </div>
                     {/* menu */}
-                    <div className="hidden md:flex space-x-6">
+                    <div className="hidden md:flex space-x-6">  
                         <a href="#inicio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group">
                             Inicio
                             <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600"></span>
