@@ -53,7 +53,7 @@ function Navbar(){
                             </span>
                         )}
                         </a>
-                        <Link to={"/Login"} className="relative group p-2.5 hover:bg-linear-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl 
+                        <Link to={"/login"} className="relative group p-2.5 hover:bg-linear-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl 
                         transition-all duration-300 transform hover:scale-105">
                             <User className="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition-all duration-300"/>
                         </Link>

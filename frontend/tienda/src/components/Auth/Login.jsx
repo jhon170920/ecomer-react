@@ -9,8 +9,8 @@ export default function Login(){
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState({Type: '', text: ''});
-    const navigate = useNavigate
+    const [message, setMessage] = useState({type: '', text: ''});
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -19,7 +19,7 @@ export default function Login(){
         try {
             const response = await axios.post('http://localhost:8081/api/login', {
                 email: email,
-                password: password
+                pass: password
             });
             const data = response.data; //axios parsea el JSON automaticamente
             setMessage({
@@ -29,7 +29,7 @@ export default function Login(){
             console.log('Usuario:',data.usuario);
             //Navegar despues de 1 segundo
             setTimeout(()=>{
-                navigate('/Home');
+                navigate('/');
             }, 1000);
         } catch (error) {
             console.error('Error:', error);

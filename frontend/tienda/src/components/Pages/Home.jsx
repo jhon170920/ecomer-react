@@ -11,9 +11,9 @@ export default function Home(){
     <Navbar/>
     <Hero/>
     <Categories/>
-    <Footerpage/>
     <FeaturedProducts/>
     <Newsletter/>
+    <Footerpage/>
     </>
     );
 }
