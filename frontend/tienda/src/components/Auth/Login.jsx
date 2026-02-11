@@ -26,11 +26,12 @@ export default function Login(){
                 type: 'success',
                 text: `¡Bienvenido ${data.usuario.name}!`
             });
-            console.log('Usuario:',data.usuario);
-            //Navegar despues de 1 segundo
+            console.log('usuario:',data.usuario);
+            localStorage.setItem('usuario', JSON.stringify(data.usuario));
+            //Navegar despues de 2 segundo
             setTimeout(()=>{
                 navigate('/');
-            }, 1000);
+            }, 2000);
         } catch (error) {
             console.error('Error:', error);
 
