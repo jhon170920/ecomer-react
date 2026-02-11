@@ -35,7 +35,7 @@ function Navbar() {
 
     return (
         <header className="bg-white shadow-lg sticky top-0 z-50">
-            <nav className="container mx-auto px-4 py-4">
+            <nav className="w-full h-16 mx-auto px-2 py-2">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <Link to="/" className="flex items-center">

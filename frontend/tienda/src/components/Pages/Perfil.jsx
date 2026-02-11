@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../Layout/Navbar';
 
 
 
@@ -31,6 +32,9 @@ export default function Perfil() {
     }
         
     return(
+        <>
+         <Navbar />  {/*Agrega el Navbar para mantener la consistencia de la navegación */}
+         
         <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 mt-10">
             {/* Header con Avatar */}
             <div className="flex items-center gap-6 pb-8 border-b border-gray-200">
@@ -49,6 +53,7 @@ export default function Perfil() {
                     <label className="block text-gray-700 font-medium mb-2">Nombre</label>
                     <input
                         type="text"
+                        placeholder={usuario.name}
                         disabled={!editando}
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -60,6 +65,7 @@ export default function Perfil() {
                     <label className="block text-gray-700 font-medium mb-2">Teléfono</label>
                     <input
                         type="tel"
+                        placeholder={usuario.telefono}
                         disabled={!editando}
                         value={formData.telefono}
                         onChange={(e) => setFormData({...formData, telefono: e.target.value})}
@@ -83,6 +89,7 @@ export default function Perfil() {
                 )}
             </div>
         </div>
+    </>
     )
 };
 
