@@ -17,7 +17,7 @@ export const registrarUser=async(req,res)=>{
         const saltRounds = 10;
         const hasherPassword = await bcrypt.hash(pass, saltRounds);
         //Crear usuario en la base de datos
-        const newusuario = new user({email, name, pass:hasherPassword, tel});
+        const newusuario = new user({email, name, pass:hasherPassword, tel, rol:"user"});
         await newusuario.save();
         res.status(201).json({message: "Usuario registrado con exito"});
     }catch (error) {

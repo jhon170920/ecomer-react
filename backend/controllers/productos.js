@@ -2,7 +2,7 @@ import productos from "../models/productos.js"
 
 //crear producto
 
-export const crearProducto = async(req,res)=>{
+export const crearProductos = async(req,res)=>{
     try {
         const { productId, Nombre, Descripcion, Precio, Imagen } = req.body;
     
@@ -31,4 +31,32 @@ export const crearProducto = async(req,res)=>{
       }
     
 };
+//actualizar producto
+export const actualizarProductos = (req, res) => {
+   try {
+     const { id } = req.params
+    const product = productos.findByIdAndUpdate(id, req.body, { new: true});
+    if (!product){
+        return res.status(404).json({message:"Producto no encontrado"});
+    }
+    res.json(product);
+   } catch (error) {
+    res.status(500).json({message:"Error al actualizar el producto"});
+   }
+};
+// eliminar producto
+export const eliminarProductos = (req, res) => {
+    try {
+        const { id } = req.params;
+      const product = productos.findByIdAndDelete(id);
+      if (!product){
+          return res.status(404).json({message:"Producto no encontrado"});
+      }
+      res.json({message:"Producto eliminado con exito"});
+    } catch (error) {
+      res.status(500).json({message:"Error al eliminar el producto"});
+    }
+}
+    
+
 export default productos;

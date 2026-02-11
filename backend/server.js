@@ -7,6 +7,7 @@ import { loginUsuario } from './controllers/login.js';
 import PerfilRouter from './routes/perfil.js';
 import RecuperarPassword from './routes/recuperar.js'
 import pedidoRoutes from './routes/pedido.js';
+import adminRoutes from './routes/admin.js';
 
 const app = express();
 //habilitar todas la rutas
@@ -25,6 +26,7 @@ app.use("/api/login", loginUsuario);
 app.use("/api/perfil", PerfilRouter);
 app.use("/api/Recuperar", RecuperarPassword);
 app.use("/api/pedido", pedidoRoutes);
+app.use("/api/admin", adminRoutes);
 
 
 app.listen(8081,()=>console.log('servidor corriendo en http://localhost:8081'));

@@ -5,6 +5,9 @@ const usershema = new mongoose.Schema({
     name:{type:String, required:true},
     pass:{type:String, required:true},
     tel:{type:Number, required:true, minlenght: 12},
+    rol: {type:String, enum:['user','admin'], default:'user'}, // Agregar roles
+    codigoRecuperacion: String,
+    codigoExpiracion: Date,
 });
 //forzamos la conexion a que guarde la informacion en la base de datos
 const user=mongoose.model("usuarios", usershema, "usuarios")
