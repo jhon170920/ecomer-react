@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+/vendor
+
+# Archivos de entorno y secretos
+.env
+.env.local
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Compilados y logs
+dist/
+build/
+*.log
+*.tmp
+# Archivos de configuración del editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+# Archivos específicos de sistemas operativos
+*.swp
+*~
+# Archivos de base de datos
+*.sqlite
+*.db
+# Archivos de caché
+.cache/
+*.bak

@@ -26,8 +26,8 @@ export const loginUsuario = async (req, res) => {
     res.status(200).json({ message: "Inicio de sesión correcto",
       usuario:{
         id:usuario._id,
-        Name:usuario.name,
-        Email:usuario.email,
+        name:usuario.name,
+        email:usuario.email,
         
         telefono:usuario.tel
       }
