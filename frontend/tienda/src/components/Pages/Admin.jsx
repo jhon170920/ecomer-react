@@ -95,13 +95,13 @@ return (
     </div>
     )}
     {/* Input de archivo oculto — se activa por clic o por referencia */}
-    <input
-    ref={inputRef}
-    type="file"
-    accept="image/*"
-    onChange={handleFileInput}
-    className="hidden"
-    />
+        <input
+        ref={inputRef}
+        type="file"
+        accept="image/*"
+        onChange={handleFileInput}
+        className="hidden"
+        />
     </div>
     );
                    
@@ -111,8 +111,6 @@ return (
 
         
 
-        )}
-    </div>
-);
+ 
 
 
