@@ -51,10 +51,10 @@ function Navbar() {
 
                     {/* Menú Desktop */}
                     <div className="hidden md:flex space-x-6">
-                        <a href="#inicio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Inicio</a>
-                        <a href="#productos" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Productos</a>
-                        <a href="#categorias" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Categorías</a>
-                        <a href="#contacto" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Contacto</a>
+                        <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Inicio</Link>
+                        <Link to="/productos" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Productos</Link>
+                        <Link to="/categorias" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Categorías</Link>
+                        <Link to="/contacto" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Contacto</Link>
                     </div>
 
                     {/* Icons Section */}
@@ -132,21 +132,21 @@ function Navbar() {
                 {mobileMenuOpen && (
                     <div className="md:hidden mt-4 py-4 border-t border-gray-200 animate-in slide-in-from-top duration-300">
                         <div className="flex flex-col space-y-4">
-                            <a href="#inicio" className="text-gray-700
+                            <Link to="/" className="text-gray-700
                             hove:text-blue-600 font-medium transition-colors duration-200 py-2">
                             Inicio
-                            </a>
-                            <a href="#productos" className="text-gray-700 hover:text-blue-600
+                            </Link>
+                            <Link to="/productos" className="text-gray-700 hover:text-blue-600
                             font-medium transition-colors duration-200 py-2">
                             Productos
-                            </a>
-                            <a href="#categorias" className="text-gray-700 hover:text-blue-600
+                            </Link>
+                            <Link to="/categorias" className="text-gray-700 hover:text-blue-600
                             font-medium transition-colors duration-200 py-2">
                             Categorías
-                            </a>
-                            <a href="#contacto" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+                            </Link>
+                            <Link to="/contacto" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
                             Contacto
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     )};

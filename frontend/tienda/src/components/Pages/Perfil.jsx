@@ -8,14 +8,15 @@ export default function Perfil() {
     const [editando, setEditando] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
-        telefono: ''
+        telefono: '',
+        email: '',
     });
 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
 
     const handleActualizar = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/api/usuarios/${usuario.id}`, formData);
+            const response = await axios.put(`http://localhost:8080/api/usuarios/${usuario}`, formData);
             if (response.status === 200) {
                 alert('Perfil actualizado con éxito');
                 setEditando(false);

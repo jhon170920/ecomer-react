@@ -24,9 +24,9 @@ function Footerpage() {
                     Enlaces 
                     </h3>
                     <ul className="space-y-2 text-gray-400">
-                        <li><a href="#index" className="hover:text-white transition-colors duration-200">Inicio</a></li>
-                        <li><a href="#productos" className="hover:text-white transition-colors duration-200">Productos</a></li>
-                        <li><a href="#carrito" className="hover:text-white transition-colors duration-200">Carrito</a></li>
+                        <li><a href="/" className="hover:text-white transition-colors duration-200">Inicio</a></li>
+                        <li><a href="/productos" className="hover:text-white transition-colors duration-200">Productos</a></li>
+                        <li><a href="/carrito" className="hover:text-white transition-colors duration-200">Carrito</a></li>
                     </ul>
                 </div>
                 <div>
@@ -34,9 +34,9 @@ function Footerpage() {
                         Atención
                     </h3>
                     <ul className="space-y-2 text-gray-400">
-                        <li><a href="#" className="hover:text-white transition-colors duration-200">contacto </a></li>
-                        <li><a href="#" className="hover:text-white transition-colors duration-200">Envíos </a></li>
-                        <li><a href="#" className="hover:text-white transition-colors duration-200">Devoluciones </a></li>
+                        <li><a href="/#contacto" className="hover:text-white transition-colors duration-200">contacto </a></li>
+                        <li><a href="/#envios" className="hover:text-white transition-colors duration-200">Envíos </a></li>
+                        <li><a href="/#devoluciones" className="hover:text-white transition-colors duration-200">Devoluciones </a></li>
                     </ul>
                 </div>
                 <div>
