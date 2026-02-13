@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext"
 import {User, Mail, Lock, Eye, EyeOff, LogIn, Loader2, Shield } from "lucide-react";
 import axios from "axios";
 
@@ -11,56 +12,26 @@ export default function Login(){
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({type: '', text: ''});
     const navigate = useNavigate();
+    const {login} = useAuth();
+
+
 
     async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
         setMessage({type: '', text: '' });
         try {
-            const response = await axios.post('http://localhost:8081/api/login', {
-                email: email,
-                pass: password
-            });
-            const data = response.data; //axios parsea el JSON automaticamente
+            await login(email,password);
             setMessage({
                 type: 'success',
-                text: `¡Bienvenido ${data.usuario.name}!`
+                text: '!Inicio de sesion correcti'
             });
-            console.log('usuario:',data.usuario);
-            localStorage.setItem('usuario', JSON.stringify(data.usuario));
-            //Navegar despues de 2 segundo
-            setTimeout(()=>{
-                navigate('/');
-            }, 2000);
         } catch (error) {
             console.error('Error:', error);
-
-            //Manejo de errores con AXIOS
-            if (error.response){
-                //EL SERVIDOR RESPONDIO CON UN CODIGO DE ERROR
-                if (error.response.status === 404){
-                    setMessage({type: 'error', text: 'Usuario no encontrado'});
-                }else if(error.response.status === 401){
-                    setMessage({type: 'error', text: 'contraseña incorrecta'});
-                }else{
-                    setMessage({
-                        type: 'error',
-                        text: error.response.data.message || 'Error al iniciar sesion'
-                    });
-                }
-            }else if(error.request){
-                //LA PETICION SE HIZO PERO NO HUBO RESPUESTA
-                setMessage({
-                    type: 'error',
-                    text: 'No se pudo conectar con el servidor.'
-                });
-            }else{
-                //ERROR AL CONFIGURAR LA PETICION
-                setMessage({
-                    type: 'error',
-                    text: 'Error al procesar la solicitud.'
-                });
-            }
+            setMessage({
+                type:'error',
+                text: error.message || 'Error al iniciar sesion'
+            });
         }finally{
             setLoading(false);
         }
@@ -80,7 +51,7 @@ export default function Login(){
                         <p className="text-gray-600">Inicia sesión en tu cuenta de TechStore Pro</p>
                     </div>
 
-                    <div className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         
                         {/* Email */}
                         <div>
@@ -94,7 +65,6 @@ export default function Login(){
                                 placeholder="tu@email.com" 
                                 onChange={e => setEmail(e.target.value)} 
                                 value={email}
-                                onKeyDown={e => e.key === 'Enter' && handleSubmit(e)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-900"
                                 required
                             />
@@ -185,7 +155,7 @@ export default function Login(){
                             )}
                         </button>
 
-                    </div>
+                    </form>
 
                     {/* Divider */}
                     <div className="relative my-6">
