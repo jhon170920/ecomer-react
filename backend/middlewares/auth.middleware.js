@@ -13,7 +13,7 @@ export const verificarToken = async (req, res, next) =>{
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
         //Consulta el usuario actualizado en la BD
-        const usuario = await User.findById(decoded.id).select("-pass");
+        const usuario = await User.findById(decoded.id).select("-password");
         if (!usuario){
             return res.status(401).json ({message:"Usuario no encontrado"});
         }

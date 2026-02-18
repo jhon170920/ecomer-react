@@ -8,11 +8,11 @@ export const AuthProvider = ({ children }) => {
     const [usuario, setUsuario] = useState(null);
     const navigate = useNavigate();
 
-    const login = async (email, pass) => {
+    const login = async (email, password) => {
     try {
-        const response = await axios.post("htttp://localhost:8081/api/login", {
+        const response = await axios.post("http://localhost:8081/api/login", {
             email: email,
-            password: pass
+            password: password
         });
         const data = response.data; // axios ya parse JSON
         //Guardar usuario y Token en memoria
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     }
     };
     const logout = () =>{
-        setUsuario=(null);
+        setUsuario(null);
         navigate("/login");
     
     };

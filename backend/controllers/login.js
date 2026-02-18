@@ -4,10 +4,10 @@ import User from "../models/user.js"; // <-- tu modelo de usuario
 
 export const loginUsuario = async (req, res) => {
   try {
-    const { email, pass } = req.body;
+    const { email, password } = req.body;
 
     // Validar campos obligatorios
-    if (!email || !pass) {
+    if (!email || !password) {
       return res.status(400).json({ message: "Correo y contraseña obligatorios" });
     }
 
@@ -18,7 +18,7 @@ export const loginUsuario = async (req, res) => {
     }
 
     // Comparar contraseña ingresada con la guardada (encriptada)
-    const passwordValida = await bcrypt.compare(pass, usuario.pass);
+    const passwordValida = await bcrypt.compare(password, usuario.password);
     if (!passwordValida) {
       return res.status(401).json({ message: "Contraseña incorrecta" });
     }

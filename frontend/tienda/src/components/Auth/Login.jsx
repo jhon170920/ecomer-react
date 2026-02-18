@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext"
 import {User, Mail, Lock, Eye, EyeOff, LogIn, Loader2, Shield } from "lucide-react";
-import axios from "axios";
 
 export default function Login(){
     const [email, setEmail] = useState('');

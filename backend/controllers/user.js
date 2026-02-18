@@ -3,9 +3,9 @@ import bcrypt from "bcrypt";
 //crear usuario
 export const registrarUser=async(req,res)=>{
     try {
-        const{email, name, pass, tel}=req.body;
+        const{email, name, password, tel}=req.body;
         //validar informacion
-        if (!email||!name||!pass||!tel){
+        if (!email||!name||!password||!tel){
             return res.status(400).json({message: "llene los campos"})
          }         
         //valida el usuario si ya exite
@@ -15,9 +15,9 @@ export const registrarUser=async(req,res)=>{
         }
         //Encriptar contraseña
         const saltRounds = 10;
-        const hasherPassword = await bcrypt.hash(pass, saltRounds);
+        const hasherPassword = await bcrypt.hash(password, saltRounds);
         //Crear usuario en la base de datos
-        const newusuario = new user({email, name, pass:hasherPassword, tel, rol:"user"});
+        const newusuario = new user({email, name, password:hasherPassword, tel, rol:"user"});
         await newusuario.save();
         res.status(201).json({message: "Usuario registrado con exito"});
     }catch (error) {

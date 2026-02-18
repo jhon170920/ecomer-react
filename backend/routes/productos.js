@@ -4,7 +4,7 @@ import { crearProductos, obtenerProductos, actualizarProductos, eliminarProducto
 
 const router=express.Router();
 //ver productos (useer y admin)
-router.get("/", verificarToken, obtenerProductos);
+router.get("/", obtenerProductos);
 //ruta crear producto
 router.post("/", verificarToken, soloAdmin, crearProductos);
 // ruta actualizar producto

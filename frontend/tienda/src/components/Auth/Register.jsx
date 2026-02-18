@@ -55,7 +55,7 @@ export default function Register(){
                 name: formData.nombre,
                 tel: formData.telefono,
                 email: formData.email,
-                pass: formData.password
+                password: formData.password
             });
 
             setMessage({ type:"success", text: "Cuenta creada exitosamente" });

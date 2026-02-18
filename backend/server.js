@@ -3,11 +3,14 @@ import cors from 'cors';
 import "./db/db.js";
 import ProductRoutes from "./routes/productos.js";
 import userRoutes from './routes/user.js';
-import { loginUsuario } from './controllers/login.js';
+import loginRoutes from './routes/login.js';
 import PerfilRouter from './routes/perfil.js';
 import RecuperarPassword from './routes/recuperar.js'
 import pedidoRoutes from './routes/pedido.js';
 import adminRoutes from './routes/admin.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 //habilitar todas la rutas
@@ -22,7 +25,7 @@ app.get('/',(req,res)=> {
 //api producto
 app.use("/api/productos",ProductRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/login", loginUsuario);
+app.use("/api/login", loginRoutes);
 app.use("/api/perfil", PerfilRouter);
 app.use("/api/Recuperar", RecuperarPassword);
 app.use("/api/pedido", pedidoRoutes);

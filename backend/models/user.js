@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const usershema = new mongoose.Schema({
     email: {type:String, required:true},
     name:{type:String, required:true},
-    pass:{type:String, required:true},
+    password:{type:String, required:true},
     tel:{type:Number, required:true, minlenght: 12},
     rol: {type:String, enum:['user','admin'], default:'user'}, // Agregar roles
     codigoRecuperacion: String,
