@@ -15,7 +15,8 @@ dotenv.config();
 const app = express();
 //habilitar todas la rutas
 app.use(cors());
-app.use(express.json());
+app.use(express.json({limit: '10mb'})); // para parsear JSON con un límite de tamaño
+app.use(express.urlencoded({extended: true, limit: '10mb'})); // para parsear datos de formularios con un límite de tamaño
 
 // primer ruta
 
