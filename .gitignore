@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+*.log
+.idea/
+
+# Optional: Ignore specific files or directories
+# coverage/
+# .vscode/
