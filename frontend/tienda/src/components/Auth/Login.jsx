@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext"
-import {User, Mail, Lock, Eye, EyeOff, LogIn, Loader2, Shield } from "lucide-react";
+import {User, Mail, Lock, Eye, EyeOff, LogIn, Loader2, Shield, } from "lucide-react";
 
 export default function Login(){
     const [email, setEmail] = useState('');
@@ -108,9 +108,9 @@ export default function Login(){
                                 
                                 <span className="ml-2 text-sm text-gray-700">Recordarme</span>
                             </label>
-                            <button type="button" className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">
-                                ¿Olvidaste tu contraseña?
-                            </button>
+                            <Link to="/recuperar" className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">
+                                <p>¿Olvidaste tu contraseña?</p>
+                            </Link>
                         </div>
 
                         {/* Mensajes */}

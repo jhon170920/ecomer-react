@@ -6,7 +6,9 @@ import AdminPanel from './components/Pages/Admin';
 import {AuthProvider} from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import Productos from './components/Pages/Productos';
-
+import Recuperar from './components/Auth/Recuperar';
+import Perfil from './components/Pages/Perfil';
+import CodigoRecuperar from './components/Auth/CodigoRecuperar';
 
 function App() {
 
@@ -18,6 +20,9 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/recuperar' element={<Recuperar/>}/>
+      <Route path='/perfil' element={<Perfil/>}/>
+      <Route path='/codigo-recuperar' element={<CodigoRecuperar/>}/>
 
 
       <Route path='/productos' 

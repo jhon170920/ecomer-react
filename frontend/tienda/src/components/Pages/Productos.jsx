@@ -43,7 +43,7 @@ export default function Productos(){
         id: producto.productId, 
         nombre: producto.Nombre, 
         precio: producto.Precio, 
-        imagen: producto.Imagen, 
+        imagen: producto.Image, 
         cantidad: 1 
       }];
     });
@@ -115,7 +115,7 @@ export default function Productos(){
             <div key={producto.productId} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
                 
                 <div className="relative h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-                <img src={producto.Imagen} alt={producto.Nombre} className="w-full h-full object-cover hover:scale-105 transition transform duration-300" />
+                <img src={producto.Image} alt={producto.Nombre} className="w-full h-full object-cover hover:scale-105 transition transform duration-300" />
                 <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">-15%</div>
                 </div>
 
