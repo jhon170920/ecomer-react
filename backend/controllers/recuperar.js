@@ -16,6 +16,7 @@ const generarCodigo = () => {
 // solicitar codigo de recuperacion
 export const solicitarCodigo = async (req, res) => {
     try {
+        
         const { email } = req.body;
         if (!email) {
             return res.status(400).json({
@@ -37,7 +38,7 @@ export const solicitarCodigo = async (req, res) => {
         await usuario.save();
         //Configurar el correo
         const mailOptions = {
-            from: 'j276scc@gmail.com',
+            from: process.env.EMAIL_USER,
             to: usuario.email,
             subject: 'Código de recuperación - TechStore Pro',
             html: `
@@ -93,6 +94,7 @@ export const solicitarCodigo = async (req, res) => {
 //verificar codigo y cambiar contraseña
 export const cambiarPassword = async (req, res) =>{
     try {
+        console.log("Body recibido:", req.body);
         const{email, codigo, nuevaPassword} = req.body;
         //Validaciones
         if (!email || !codigo || !nuevaPassword){
@@ -100,6 +102,8 @@ export const cambiarPassword = async (req, res) =>{
                 message:"Todos los campos son obligatorios"
             });
         }
+        
+        //Validar contraseña
         if (nuevaPassword.length < 6){
             return res.status(400).json({
                 message:"La contraseña debe tener al menos 6 caracteres"
@@ -112,11 +116,19 @@ export const cambiarPassword = async (req, res) =>{
                 message: "Correo no encontrado"
             });
         }
+        // Verificar que el código sea correcto
+        if (usuario.codigoRecuperacion !== codigo) {
+            return res.status(400).json({ message: "Código incorrecto" });
+        }
+        // Verificar que no haya expirado
+        if (Date.now() > usuario.codigoExpiracion) {
+            return res.status(400).json({ message: "El código ha expirado" });
+        }
         //Encriptar nueva contraseña
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
         //Actualizar contraseña y limpiar código
-        usuario.pass = hashedPassword;
+        usuario.password = hashedPassword;
         usuario.codigoRecuperacion = undefined;
         usuario.codigoExpiracion = undefined;
         await usuario.save(); 

@@ -28,7 +28,7 @@ app.use("/api/productos",ProductRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/perfil", PerfilRouter);
-app.use("/api/Recuperar", RecuperarPassword);
+app.use("/api/recuperar", RecuperarPassword);
 app.use("/api/pedido", pedidoRoutes);
 app.use("/api/admin", adminRoutes);
 
