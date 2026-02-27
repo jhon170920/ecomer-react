@@ -3,16 +3,12 @@ import Navbar from "../Layout/Navbar";
 import Footerpage from "../Layout/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useCart } from "../../context/CartContext"; // importar bien la ruta del contexto
 
-export default function Productos(){
+export default function Productos() {
   const [productos, setProductos] = useState([]);
-  const [carrito, setCarrito] = useState(() => {
-    // Carga inicial desde localStorage
-    const guardado = localStorage.getItem("carrito");
-    return guardado ? JSON.parse(guardado) : [];
-  });
+  const { agregarAlCarrito } = useCart(); // solo esto
 
-  // 1. Cargar productos con Axios
   useEffect(() => {
     const obtenerProductos = async () => {
       try {
@@ -25,35 +21,7 @@ export default function Productos(){
     obtenerProductos();
   }, []);
 
-  // 2. Guardar carrito en localStorage cuando cambie
-  useEffect(() => {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-  }, [carrito]);
-
-  // 3. Función para agregar al carrito
-  const agregarAlCarrito = (producto) => {
-    setCarrito(prevCarrito => {
-      const existente = prevCarrito.find(item => item.id === producto.productId);
-      if (existente) {
-        return prevCarrito.map(item => 
-          item.id === producto.productId ? { ...item, cantidad: item.cantidad + 1 } : item
-        );
-      }
-      return [...prevCarrito, { 
-        id: producto.productId, 
-        nombre: producto.Nombre, 
-        precio: producto.Precio, 
-        imagen: producto.Image, 
-        cantidad: 1 
-      }];
-    });
-  };
-
-  // 4. Calcular total de items para el contador
-  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-
   
-
     return(
     <>
     <Navbar/>

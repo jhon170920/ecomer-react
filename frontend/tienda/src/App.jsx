@@ -9,12 +9,15 @@ import Productos from './components/Pages/Productos';
 import Recuperar from './components/Auth/Recuperar';
 import Perfil from './components/Pages/Perfil';
 import CodigoRecuperar from './components/Auth/CodigoRecuperar';
+import { CartProvider } from './context/CartContext';
 
 function App() {
 
   return (
     <BrowserRouter>
     <AuthProvider>
+      <CartProvider>
+
     <Routes>
       
       <Route path='/' element={<Home/>}/>
@@ -37,6 +40,7 @@ function App() {
             }/>
             <Route path="*" element={<Navigate to="/" replace/>} />
     </Routes>
+    </CartProvider>
     </AuthProvider>
     </BrowserRouter>
     

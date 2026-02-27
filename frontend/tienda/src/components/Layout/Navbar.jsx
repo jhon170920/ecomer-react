@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react"; // Añadimos useRef para cerrar al hacer clic fuera
 import { ShoppingCart, User, Menu, X, LogOut, Settings } from 'lucide-react';
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 function Navbar() {
-    const [cartCount, setCartCount] = useState(0);
+    const { totalItems } = useCart(); // obtener el count del carrito desde el contexto
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false); // Estado para el dropdown
     const [usuario, setUsuario] = useState(null);
@@ -62,9 +63,9 @@ function Navbar() {
                         {/* Cart */}
                         <a href="#carrito" className="relative p-2.5 hover:bg-blue-50 rounded-xl transition-all">
                             <ShoppingCart className="w-6 h-6 text-gray-700" />
-                            {cartCount > 0 && (
+                            {totalItems > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
-                                    {cartCount}
+                                    {totalItems}
                                 </span>
                             )}
                         </a>

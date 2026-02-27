@@ -9,4 +9,4 @@ const uri = process.env.dbURI;
 
 mongoose.connect(uri)
 .then(()=>console.log("✅conectado en la base de datos 💚"))
-.catch(err => console.log("❌ Error al concetar en la base de datos 💔"));
+.catch(err => console.log("❌ Error al conectar en la base de datos 💔"));
