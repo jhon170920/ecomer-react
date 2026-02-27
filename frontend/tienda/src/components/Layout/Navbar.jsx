@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react"; // Añadimos useRef para cerrar al hacer clic fuera
-import { ShoppingCart, User, Menu, X, LogOut, Settings } from 'lucide-react';
+import { ShoppingCart, User, Menu, X, LogOut } from 'lucide-react';
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Navbar() {
     const { totalItems } = useCart(); // obtener el count del carrito desde el contexto
@@ -10,6 +11,8 @@ function Navbar() {
     const [usuario, setUsuario] = useState(null);
     const navigate = useNavigate();
     const dropdownRef = useRef(null);
+    const {logout} = useAuth();
+
 
     useEffect(() => {
         const usuarioGuardado = localStorage.getItem('usuario');
@@ -101,7 +104,7 @@ function Navbar() {
                                             </Link>
                                             
                                             <button 
-                                                onClick={handleLogout}
+                                                onClick={logout}
                                                 className="w-full flex items-center space-x-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                                             >
                                                 <LogOut className="w-4 h-4" />

@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 function Footerpage() {
     return(
         <footer id="contacto" className="bg-gray-900 text-white py-12 flex justify-center">
@@ -24,9 +27,9 @@ function Footerpage() {
                     Enlaces 
                     </h3>
                     <ul className="space-y-2 text-gray-400">
-                        <li><a href="/" className="hover:text-white transition-colors duration-200">Inicio</a></li>
-                        <li><a href="/productos" className="hover:text-white transition-colors duration-200">Productos</a></li>
-                        <li><a href="/carrito" className="hover:text-white transition-colors duration-200">Carrito</a></li>
+                        <li><Link to="/" className="hover:text-white transition-colors duration-200">Inicio</Link></li>
+                        <li><Link to="/productos" className="hover:text-white transition-colors duration-200">Productos</Link></li>
+                        <li><Link to="/carrito" className="hover:text-white transition-colors duration-200">Carrito</Link></li>
                     </ul>
                 </div>
                 <div>
@@ -34,7 +37,7 @@ function Footerpage() {
                         Atención
                     </h3>
                     <ul className="space-y-2 text-gray-400">
-                        <li><a href="/#contacto" className="hover:text-white transition-colors duration-200">contacto </a></li>
+                        <li><Link to="/contacto" className="hover:text-white transition-colors duration-200">contacto </Link></li>
                         <li><a href="/#envios" className="hover:text-white transition-colors duration-200">Envíos </a></li>
                         <li><a href="/#devoluciones" className="hover:text-white transition-colors duration-200">Devoluciones </a></li>
                     </ul>

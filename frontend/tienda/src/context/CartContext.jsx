@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const CartContext = createContext();
 
@@ -49,6 +50,8 @@ export function CartProvider({ children }) {
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
   const totalPrecio = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
+      
+    
   return (
     <CartContext.Provider value={{
       carrito,

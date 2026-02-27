@@ -3,11 +3,15 @@ import Navbar from "../Layout/Navbar";
 import Footerpage from "../Layout/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext"; // importar bien la ruta del contexto
+import { useAuth } from "../../context/AuthContext";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
   const { agregarAlCarrito } = useCart(); // solo esto
+  const {usuario} = useAuth(); // obtener el usuario del contexto de autenticación
+  const navigate = useNavigate();
 
   useEffect(() => {
     const obtenerProductos = async () => {
@@ -20,12 +24,19 @@ export default function Productos() {
     };
     obtenerProductos();
   }, []);
-
+    const handleComprar = (producto) => {
+        if (!usuario){
+            alert("Debes iniciar sesión para agregar productos al carrito.");
+            navigate('/login', { state: { from: '/productos' } }); // redirige a la página de login si no hay usuario
+        return;
+        }
+        agregarAlCarrito(producto);
+    };
   
     return(
-    <>
+    <div className="flex min-h-screen flex-col">
     <Navbar/>
-     <div>
+     <div className="flex-1">
         {/* buscador y filtros */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
             {/* <!--Barra de busqueda--> */}
@@ -104,7 +115,7 @@ export default function Productos() {
                     Ver Detalles
                     </button>
                     <button 
-                    onClick={() => agregarAlCarrito(producto)}
+                    onClick={() => handleComprar(producto)}
                     className="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition flex-1 text-sm"
                     >
                     Comprar
@@ -116,6 +127,6 @@ export default function Productos() {
         </div>
     </div>
     <Footerpage/>
-    </>
+    </div>
 
 )}

@@ -11,6 +11,7 @@ import Perfil from './components/Pages/Perfil';
 import CodigoRecuperar from './components/Auth/CodigoRecuperar';
 import { CartProvider } from './context/CartContext';
 import Carrito from './components/Pages/Carrito';
+import Contacto from './components/Pages/Contacto';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Route path='/perfil' element={<Perfil/>}/>
       <Route path='/codigo-recuperar' element={<CodigoRecuperar/>}/>
       <Route path='/carrito' element={<Carrito/>}/>
+      <Route path='/contacto' element={<Contacto/>}/>
 
 
 

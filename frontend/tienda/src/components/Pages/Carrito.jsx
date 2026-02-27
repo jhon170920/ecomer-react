@@ -4,10 +4,14 @@ import { ShoppingCart, MapPin, FileText, Shield, Package, Clock, Trash2, Plus, M
 import { useCart } from "../../context/CartContext";
 import Navbar from "../Layout/Navbar";
 import Footerpage from "../Layout/Footer";
+import { useAuth } from "../../context/AuthContext";
+import axios from "axios";
 
 export default function Carrito() {
   const { carrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito, totalPrecio } = useCart();
   const navigate = useNavigate();
+  const {usuario} = useAuth();
+
 
   const [form, setForm] = useState({
     direccion: "",
@@ -15,12 +19,20 @@ export default function Carrito() {
     codigoPostal: "",
     metodoPago: "efectivo",
   });
+  
+  const [error, setError] = useState("");
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
   const finalizarCompra = () => {
+    //validar sesion
+    if (!usuario){
+      navigate("/login");
+      return;
+    }
     if (carrito.length === 0) {
       alert("Tu carrito está vacío.");
       return;
@@ -30,9 +42,38 @@ export default function Carrito() {
       return;
     }
     // Aquí iría la llamada al backend
-    alert("¡Compra realizada con éxito! 🎉");
-    vaciarCarrito();
-    navigate("/");
+    setError("");
+
+    try {
+      const body ={
+        email: usuario.email,
+        telefono: form.telefono,
+        direccion: `${form.direccion}, ${form.ciudad}, ${form.codigoPostal}`.trim(),
+        metodoPago: form.metodoPago,
+        precioTotal: totalPrecio,
+        productos: carrito.map((item) =>({
+          producto_id: item.id,
+          nombre: item.nombre,
+          precio: item.precio,
+          cantidad: item.cantidad,
+        })),
+      };
+      // llamar al backend con axios
+      const response = axios.post("http://localhost:8081/api/pedido", body, {
+        headers:{
+          authorization: `Bearer ${usuario.token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      //Exito vaciar carrito
+      console.log("Pedido realizado:", response.data);
+      alert("¡Compra realizada con éxito! 🎉");
+      vaciarCarrito();
+      navigate("/");
+    } catch (error) {
+      console.error("Error al finalizar compra:", error);
+      setError("Hubo un error al procesar tu compra. Por favor intenta nuevamente.");
+    }
   };
 
   const carritoVacio = carrito.length === 0;
