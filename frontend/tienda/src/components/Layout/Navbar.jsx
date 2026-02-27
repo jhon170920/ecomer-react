@@ -61,14 +61,14 @@ function Navbar() {
                     {/* Icons Section */}
                     <div className="flex items-center space-x-2">
                         {/* Cart */}
-                        <a href="#carrito" className="relative p-2.5 hover:bg-blue-50 rounded-xl transition-all">
+                        <Link to="/carrito" className="relative p-2.5 hover:bg-blue-50 rounded-xl transition-all">
                             <ShoppingCart className="w-6 h-6 text-gray-700" />
                             {totalItems > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
                                     {totalItems}
                                 </span>
                             )}
-                        </a>
+                        </Link>
 
                         {/* User Profile / Dropdown */}
                         {usuario ? (
