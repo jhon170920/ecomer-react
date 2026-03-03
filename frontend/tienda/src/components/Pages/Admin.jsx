@@ -246,7 +246,7 @@ export default function AdminPanel() {
         {/* ESTADÍSTICAS ✅ corregido: las 3 tarjetas ahora están dentro del mismo grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
           <div className="bg-white border border-gray-200 rounded-2xl p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
                 <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
               </svg>
@@ -257,7 +257,7 @@ export default function AdminPanel() {
             </div>
           </div>
           <div className="bg-white border border-gray-200 rounded-2xl p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/>
               </svg>
@@ -268,7 +268,7 @@ export default function AdminPanel() {
             </div>
           </div>
           <div className="bg-white border border-gray-200 rounded-2xl p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-violet-50 rounded-xl flex items-center justify-center shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
                 <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
@@ -352,7 +352,7 @@ export default function AdminPanel() {
                           <td className="py-3.5 pl-2">
                             <div className="flex items-center gap-3">
                               {/* ✅ Corregido: className válido */}
-                              <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
+                              <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center shrink-0">
                                 {prod.Image
                                   ? <img src={prod.Image} alt={prod.Nombre} className="w-full h-full object-cover" />
                                   : <span className="text-lg">📦</span>
@@ -367,7 +367,7 @@ export default function AdminPanel() {
                           <td className="py-3.5 text-gray-500 max-w-xs">
                             <p className="truncate">{prod.Descripcion}</p>
                           </td>
-                          {/* ✅ Corregido: el precio estaba fuera del <td> */}
+                         
                           <td className="py-3.5 font-bold text-gray-800">
                             ${parseFloat(prod.Precio).toFixed(2)}
                           </td>

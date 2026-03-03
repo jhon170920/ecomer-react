@@ -18,6 +18,7 @@ export default function Carrito() {
     ciudad: "",
     codigoPostal: "",
     metodoPago: "efectivo",
+    telefono: "", 
   });
   
   const [error, setError] = useState("");
@@ -27,7 +28,7 @@ export default function Carrito() {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
-  const finalizarCompra = () => {
+  const finalizarCompra = async() => {
     //validar sesion
     if (!usuario){
       navigate("/login");
@@ -49,8 +50,8 @@ export default function Carrito() {
         email: usuario.email,
         telefono: form.telefono,
         direccion: `${form.direccion}, ${form.ciudad}, ${form.codigoPostal}`.trim(),
-        metodoPago: form.metodoPago,
-        precioTotal: totalPrecio,
+        metodo_pago: form.metodoPago,
+        precio_total: totalPrecio,
         productos: carrito.map((item) =>({
           producto_id: item.id,
           nombre: item.nombre,
@@ -59,7 +60,7 @@ export default function Carrito() {
         })),
       };
       // llamar al backend con axios
-      const response = axios.post("http://localhost:8081/api/pedido", body, {
+      const response = await axios.post("http://localhost:8081/api/pedido", body, {
         headers:{
           authorization: `Bearer ${usuario.token}`,
           "Content-Type": "application/json",
@@ -253,7 +254,17 @@ export default function Carrito() {
                       className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     />
                   </div>
-
+                  <div className="mb-3">
+                    <label className="block text-sm text-gray-600 mb-1">Teléfono</label>
+                    <input
+                      type="text"
+                      id="telefono"
+                      value={form.telefono}
+                      onChange={handleChange}
+                      placeholder="Ej: 3001234567"
+                      className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    />
+                  </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-gray-600 mb-1">Ciudad</label>
