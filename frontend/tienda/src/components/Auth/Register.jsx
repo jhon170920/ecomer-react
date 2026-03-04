@@ -100,6 +100,7 @@ export default function Register(){
                     onChange={handleChange}
                     placeholder="Nombre"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                    required
                 />
                 </div>
 
@@ -110,6 +111,7 @@ export default function Register(){
                 onChange={handleChange}
                 placeholder="Correo electrónico"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                required
                 />
 
                 {/* Teléfono */}
@@ -119,6 +121,7 @@ export default function Register(){
                 onChange={handleChange}
                 placeholder="Teléfono"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                required
                 />
 
                 {/* Password */}
@@ -130,6 +133,7 @@ export default function Register(){
                     onChange={handleChange}
                     placeholder="Contraseña"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg pr-12"
+                    required
                 />
                 <button
                     type="button"
@@ -154,6 +158,7 @@ export default function Register(){
                     type="button"
                     onClick={() => setShowConfirm(!showConfirm)}
                     className="absolute right-3 top-1/2 -translate-y-1/2"
+                    required
                 >
                     {showConfirm ? <EyeOff /> : <Eye />}
                 </button>

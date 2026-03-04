@@ -16,21 +16,55 @@ export default function Perfil() {
 
     const handleActualizar = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/api/usuarios/${usuario}`, formData);
-            if (response.status === 200) {
-                alert('Perfil actualizado con éxito');
-                setEditando(false);
-                // Actualizar el usuario en localStorage
-                const updatedUser = {...usuario, ...formData};
-                localStorage.setItem('usuario', JSON.stringify(updatedUser));
-            } else {
-                alert('Error al actualizar el perfil');
-            }
+            const response = await axios.put(
+                "http://localhost:8081/api/perfil/actualizar",
+                {
+                    id: usuario.id,
+                    name: formData.name || usuario.name,
+                    telefono: formData.telefono || usuario.telefono,
+                    email: formData.email || usuario.email
+                }
+            );
+    
+            alert('Perfil actualizado con éxito');
+            setEditando(false);
+    
+            const updatedUser = {
+                ...usuario,
+                ...response.data
+            };
+    
+            localStorage.setItem('usuario', JSON.stringify(updatedUser));
+    
         } catch (error) {
+            console.log("ERROR BACKEND:", error.response?.data);
             alert('Error al actualizar el perfil');
-            console.error(error);
         }
-    }
+    };
+    const handleEliminar = async () => {
+        const confirmar = window.confirm("¿Estás seguro de que deseas eliminar tu perfil?");
+    
+        if (!confirmar) return;
+    
+        try {
+            const response = await axios.delete(
+                "http://localhost:8081/api/perfil/eliminar",
+                { data: { email: usuario.email } } // ⚠ DELETE envía datos así
+            );
+    
+            alert(response.data.message);
+    
+            // Limpiar sesión
+            localStorage.removeItem("usuario");
+    
+            // Redirigir al login
+            window.location.href = "/login";
+    
+        } catch (error) {
+            console.error("Error backend:", error.response?.data);
+            alert("Error al eliminar el perfil");
+        }
+    };
         
     return(
         <>
@@ -88,6 +122,11 @@ export default function Perfil() {
                         <button onClick={() => setEditando(false)} className="flex-1 py-3 bg-gray-500 text-white rounded-xl font-bold">Cancelar</button>
                     </div>
                 )}
+                <button 
+                    onClick={handleEliminar}
+                    className="w-full py-4 bg-red-600 text-white rounded-xl font-bold mt-3 hover:scale-105 transition-transform shadow-lg">
+                Eliminar Perfil
+                </button>
             </div>
         </div>
     </>
